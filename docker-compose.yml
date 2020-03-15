@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+
+  jenkins:
+    image: jenkins/jenkins
+    container_name: jenkins
+    hostname: jenkins
+    privileged: true
+    tty: true
+    ports: 
+      - "8080:8080"
+    environment: #添加环境变量
+      MYSQL_ROOT_PASSWORD: mysqlroot
+    volumes: 
+      - ${PWD}/jenkins_home:/var/jenkins_home
+      - ${PWD}/plugin:/usr/share/jenkins/ref/plugins
